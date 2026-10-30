@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu, PenLine, Search, ShieldCheck, X } from "lucide-react";
-import { Logo } from "./logo";
+import { Logo } from "./Logo";
 import { SearchBox } from "@/components/common/SearchBox";
 import { getAllExperiences } from "@/data/mock-experiences";
 import { cn } from "@/lib/utils";
