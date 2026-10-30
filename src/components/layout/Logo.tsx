@@ -27,8 +27,8 @@ export function Logo({ className = "", height = 36, light = false }: LogoProps) 
 
   return (
     <Image
-      src="/brand/logo.png"
-      alt="YetişVar"
+      src="/brand/logo.svg"
+      alt="YetiŞikayet"
       width={0}
       height={0}
       unoptimized
