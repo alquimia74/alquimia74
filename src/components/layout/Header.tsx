@@ -6,19 +6,14 @@ import { usePathname } from "next/navigation";
 import { Menu, PenLine, Search, ShieldCheck, X } from "lucide-react";
 import { Logo } from "./Logo";
 import { SearchBox } from "@/components/common/SearchBox";
-import { getAllExperiences } from "@/data/mock-experiences";
 import { cn } from "@/lib/utils";
 
 const NAV = [
-  { href: "/deneyimler",            label: "Deneyimler" },
-  { href: "/kurumlar",              label: "Kurumlar" },
-  { href: "/nasil-calisir",         label: "Nasıl Çalışır?" },
-  { href: "/yayin-ilkeleri",        label: "Yayın İlkeleri" },
-  { href: "/sikca-sorulan-sorular", label: "SSS" },
-  { href: "/hakkimizda",            label: "Hakkımızda" },
+  { href: "/deneyimler", label: "Şikâyetler" },
+  { href: "/kurumlar", label: "Kurumlar" },
+  { href: "/yayin-ilkeleri", label: "Yayın İlkeleri" },
+  { href: "/hakkimizda", label: "Hakkımızda" },
 ];
-
-const TOTAL = getAllExperiences().length;
 
 export function Header() {
   const pathname = usePathname();
@@ -27,10 +22,13 @@ export function Header() {
 
   useEffect(() => {
     document.body.style.overflow = menuOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [menuOpen]);
 
-  const isActive = (href: string) => pathname === href || pathname.startsWith(href + "/");
+  const isActive = (href: string) =>
+    pathname === href || pathname.startsWith(href + "/");
 
   return (
     <header className="sticky top-0 z-50 bg-white">
@@ -38,18 +36,24 @@ export function Header() {
       <div className="hidden bg-navy text-white sm:block">
         <div className="container-main flex h-9 items-center justify-between gap-4 text-xs">
           <p className="flex items-center gap-2 truncate">
-            <span className="hidden text-white/70 sm:inline">Toplam yayımlanan deneyim</span>
-            <span className="rounded bg-white/10 px-1.5 py-0.5 font-extrabold tabular-nums text-accent">
-              {TOTAL}
+            <span className="font-semibold text-white/90">
+              Yetiş+ Çarşı çalışan şikâyetleri
             </span>
             <span className="hidden items-center gap-1 text-white/70 md:inline-flex">
               <ShieldCheck className="h-3.5 w-3.5 text-brand-light" />
-              Tüm içerikler editör kontrolünden geçer
+              Çalışanların bağımsız şikâyet arşivi
             </span>
           </p>
           <div className="flex shrink-0 items-center gap-4 text-white/80">
-            <Link href="/yayin-ilkeleri" className="hidden hover:text-white sm:inline">Yayın İlkeleri</Link>
-            <Link href="/iletisim" className="hover:text-white">Cevap Hakkı</Link>
+            <Link
+              href="/yayin-ilkeleri"
+              className="hidden hover:text-white sm:inline"
+            >
+              Yayın İlkeleri
+            </Link>
+            <Link href="/iletisim" className="hover:text-white">
+              Cevap Hakkı
+            </Link>
           </div>
         </div>
       </div>
@@ -57,7 +61,11 @@ export function Header() {
       {/* Ana satır */}
       <div className="border-b border-line">
         <div className="container-main flex h-16 items-center gap-4 md:h-[72px] md:gap-8">
-          <Link href="/" aria-label="YetişVar Ana Sayfa" className="shrink-0">
+          <Link
+            href="/"
+            aria-label="yetişikayet.com Ana Sayfa"
+            className="shrink-0"
+          >
             <Logo height={38} />
           </Link>
 
@@ -69,17 +77,26 @@ export function Header() {
               onClick={() => setSearchOpen((v) => !v)}
               className={cn(
                 "grid h-11 w-11 place-items-center rounded-full md:hidden",
-                searchOpen ? "bg-brand-soft text-brand" : "text-muted hover:bg-page"
+                searchOpen
+                  ? "bg-brand-soft text-brand"
+                  : "text-muted hover:bg-page",
               )}
               aria-label={searchOpen ? "Aramayı kapat" : "Ara"}
               aria-expanded={searchOpen}
             >
-              {searchOpen ? <X className="h-5 w-5" /> : <Search className="h-5 w-5" />}
+              {searchOpen ? (
+                <X className="h-5 w-5" />
+              ) : (
+                <Search className="h-5 w-5" />
+              )}
             </button>
             {/* Mobilde "Yaz" butonu alttaki sekme çubuğunda */}
-            <Link href="/deneyimini-paylas" className="btn btn-primary hidden sm:inline-flex">
+            <Link
+              href="/deneyimini-paylas"
+              className="btn btn-primary hidden sm:inline-flex"
+            >
               <PenLine className="h-4 w-4" />
-              Deneyim Yaz
+              Şikâyet yaz
             </Link>
             <button
               type="button"
@@ -101,7 +118,10 @@ export function Header() {
       </div>
 
       {/* Navigasyon sekmeleri */}
-      <nav className="hidden border-b border-line bg-white lg:block" aria-label="Ana menü">
+      <nav
+        className="hidden border-b border-line bg-white lg:block"
+        aria-label="Ana menü"
+      >
         <div className="container-main flex h-12 items-stretch gap-1">
           {NAV.map(({ href, label }) => (
             <Link
@@ -110,7 +130,7 @@ export function Header() {
               aria-current={isActive(href) ? "page" : undefined}
               className={cn(
                 "relative flex items-center px-3 text-sm font-semibold transition-colors",
-                isActive(href) ? "text-brand" : "text-muted hover:text-navy"
+                isActive(href) ? "text-brand" : "text-muted hover:text-navy",
               )}
             >
               {label}
@@ -120,11 +140,11 @@ export function Header() {
             </Link>
           ))}
           <Link
-            href="/kurumlar"
-            className="ml-auto flex items-center gap-1.5 text-sm font-semibold text-navy hover:text-brand"
+            href="/iletisim"
+            className="ml-auto flex items-center gap-2 rounded-full bg-brand px-4 my-2 text-xs font-extrabold text-white hover:bg-brand-dark"
           >
             <ShieldCheck className="h-4 w-4 text-brand" />
-            Kurumlar için cevap hakkı
+            İnkâr ediyorsanız, somut belge sunun.
           </Link>
         </div>
       </nav>
@@ -132,7 +152,10 @@ export function Header() {
       {/* Mobil menü */}
       {menuOpen && (
         <>
-          <div className="fixed inset-0 z-40 bg-navy/50 lg:hidden" onClick={() => setMenuOpen(false)} />
+          <div
+            className="fixed inset-0 z-40 bg-navy/50 lg:hidden"
+            onClick={() => setMenuOpen(false)}
+          />
           <div
             className="fixed inset-y-0 right-0 z-50 flex w-80 max-w-[88vw] flex-col bg-white shadow-2xl lg:hidden"
             role="dialog"
@@ -160,7 +183,7 @@ export function Header() {
                     "flex items-center border-l-[3px] px-5 py-3.5 text-[15px] font-semibold",
                     isActive(href)
                       ? "border-brand bg-brand-soft text-brand"
-                      : "border-transparent text-ink hover:bg-page"
+                      : "border-transparent text-ink hover:bg-page",
                   )}
                 >
                   {label}
@@ -180,7 +203,7 @@ export function Header() {
                 onClick={() => setMenuOpen(false)}
                 className="btn btn-primary w-full"
               >
-                <PenLine className="h-4 w-4" /> Deneyim Yaz
+                <PenLine className="h-4 w-4" /> Şikâyet yaz
               </Link>
             </div>
           </div>

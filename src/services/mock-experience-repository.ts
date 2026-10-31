@@ -13,7 +13,8 @@ import {
  */
 export const mockExperienceRepository = {
   findAll: (): Experience[] => getAllExperiences(),
-  findBySlug: (slug: string): Experience | undefined => getExperienceBySlug(slug),
+  findBySlug: (slug: string): Experience | undefined =>
+    getExperienceBySlug(slug),
   findByEntity: (entitySlug: string) => getExperiencesByEntity(entitySlug),
   search: (query: string) => searchExperiences(query),
 };

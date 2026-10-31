@@ -1,47 +1,39 @@
 import { generateMeta } from "@/lib/seo";
-import { DraftNotice, InfoLayout } from "@/components/common/InfoLayout";
-
+import { InfoLayout } from "@/components/common/InfoLayout";
+import { config } from "@/lib/config";
 export const metadata = generateMeta({
-  title: "KVKK Aydınlatma Metni",
-  description: "YetişVar KVKK aydınlatma metni taslağı.",
+  title: "Kişisel veriler",
+  description: "Gerekli bilgiyle sınırlı başvuru ve kontrollü yayın.",
   path: "/kvkk-aydinlatma",
 });
-
-export default function KvkkPage() {
+export default function Page() {
   return (
-    <InfoLayout path="/kvkk-aydinlatma" title="KVKK Aydınlatma Metni">
-      <DraftNotice>
-        <strong>Taslak Metin:</strong> Bu metin KVKK kapsamında hukukçu tarafından incelenmemiştir.
-        Veri sorumlusu bilgileri ve işleme amaçları henüz netleştirilmemiştir. Kesinleşmeden
-        yayına alınmaması önerilir.
-      </DraftNotice>
-
+    <InfoLayout
+      path="/kvkk-aydinlatma"
+      title="Kişisel veriler"
+      lead="Gerekli bilgiyle sınırlı başvuru ve kontrollü yayın."
+    >
       <div className="card prose-yv p-6 md:p-8">
-        <h2 className="!mt-0">Veri Sorumlusu</h2>
         <p>
-          YetişVar platformunu işleten kişi/kuruluş 6698 sayılı Kişisel Verilerin Korunması Kanunu
-          uyarınca veri sorumlusu sıfatıyla hareket etmektedir. Veri sorumlusuna ilişkin bilgiler
-          gerçek başvuru alınmadan önce netleştirilecektir.
+          Kişisel bilgileri şikâyet metnine yazma. İl ve kadro türü, çalışma
+          deneyiminin bağlamını açıklamak için kullanılır.
         </p>
-
-        <h2>İşlenen Kişisel Veriler</h2>
         <p>
-          Başvuru formu aracılığıyla iletilen anlatım metinleri, isteğe bağlı belgeler ve tercih
-          bilgileri işlenebilir. Başvuru sahibinin açıkça girmediği veriler toplanmaz.
+          Belgeler yalnızca{" "}
+          <a
+            href={"mailto:" + config.contactEmail}
+            className="font-bold text-brand"
+          >
+            {config.contactEmail}
+          </a>{" "}
+          adresine, ilgili başlıkla gönderilir. İnceleme için gereksiz kimlik
+          belgesi, sağlık bilgisi veya üçüncü kişilere ait veri iletme.
         </p>
-
-        <h2>İşleme Amaçları ve Hukuki Dayanak</h2>
         <p>
-          Veriler platformun editoryal süreçlerinin yürütülmesi amacıyla işlenir. Hukuki dayanak
-          KVKK madde 5/2 kapsamında meşru menfaat ve açık rıza olarak değerlendirilmesi
-          planlanmaktadır. Bu husus hukuki danışmanlık sonrası netleştirilecektir.
-        </p>
-
-        <h2>İlgili Kişilerin Hakları</h2>
-        <p>
-          KVKK madde 11 uyarınca kişisel verilerinize erişim, düzeltme, silme ve işlemenin
-          kısıtlanmasını talep etme haklarınız mevcuttur. Bu haklarınızı kullanmak için iletişim
-          kanalımıza başvurabilirsiniz.
+          Bir belgenin incelenmesi, açık yayına izin verildiği anlamına gelmez.
+          Gizlenmiş kopya ve paylaşım yetkisi ayrıca kontrol edilir. Kamuya açık
+          bir içerikle ilgili kişisel veri, düzeltme veya kaldırma talebini aynı
+          adrese ilgili bağlantıyla iletebilirsin.
         </p>
       </div>
     </InfoLayout>

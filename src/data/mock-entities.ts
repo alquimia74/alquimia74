@@ -1,91 +1,321 @@
 import { type Entity } from "@/types/entity";
 
-/**
- * ÖNEMLİ UYARI:
- * Bu sayfadaki kurum bilgileri kamuya açık kaynaklara dayanmaktadır.
- * Mülkiyet, iştirak veya yönetim ilişkileri resmî ticaret sicili veya güvenilir
- * kaynaklarla doğrulanmadan kesin gerçek olarak sunulmamaktadır.
- * "İlişkinin niteliği doğrulanmalıdır" notu eklenen alanlarda ihtiyatla yaklaşın.
- */
 export const mockEntities: Entity[] = [
   {
     id: "ent-001",
-    slug: "hazir-global",
-    name: "Hızır Global A.Ş.",
-    alternativeNames: ["Hızır Global", "Hazır Global"],
+    slug: "yetis-carsi",
+    name: "Yetiş+ Çarşı",
+    category: "E-ticaret",
     neutralDescription:
-      "Hızır Global A.Ş., Türkiye'de faaliyet gösterdiği belirtilen bir şirkettir. Çeşitli ticari markalar ve faaliyetlerle ilişkilendirildiği iddia edilmekte olup bu ilişkilerin niteliği resmî kaynaklarla doğrulanmalıdır.",
-    seoTitle: "Hızır Global A.Ş. Çalışan Deneyimleri | YetişVar",
+      "Yerel satıcıları tüketicilerle buluşturan pazaryeri; sipariş ve teslimat süreçlerini bir araya getirir.",
+    website: "https://yetisplus.com/",
+    sourceKind: "official",
+    comingSoon: false,
+    sourceUrl: "https://hizirglobal.com.tr/tr/brands",
+    alternativeNames: [],
+    seoTitle: "Yetiş+ Çarşı Çalışan Şikâyetleri | yetişikayet.com",
     seoDescription:
-      "Hızır Global A.Ş. hakkında çalışanların ücret, SGK ve çalışma koşullarıyla ilgili deneyimlerini paylaşabildiği bağımsız platform.",
+      "Hızır Global A.Ş. bünyesinde yer alan Yetiş+ Çarşı hakkında çalışan şikâyetleri, ücret, sigorta ve çalışma koşullarına ilişkin anlatımlar.",
     hasContent: true,
   },
   {
     id: "ent-002",
-    slug: "yetis-carsi",
-    name: "Yetiş+ Çarşı",
-    alternativeNames: ["Yetiş Çarşı", "Yetiscarsi", "Yetiş+Çarşı"],
+    slug: "hazir-global",
+    name: "Hızır Global A.Ş.",
+    category: "Kurumsal yapı",
     neutralDescription:
-      "Yetiş+ Çarşı, Türkiye'de faaliyet gösteren bir ticari marka olarak bilinmektedir. Hızır Global A.Ş. ile ilişkisi olduğu belirtilmekte olup bu ilişkinin niteliği resmî kaynaklarla doğrulanmalıdır.",
-    seoTitle: "Yetiş+ Çarşı Çalışan Deneyimleri | YetişVar",
+      "Yetiş+ Çarşı dahil farklı sektörlerdeki markaları ekosistem yaklaşımıyla tanıtan şirket.",
+    website: "https://hizirglobal.com.tr/tr",
+    sourceKind: "official",
+    comingSoon: false,
+    sourceUrl: "https://hizirglobal.com.tr/tr/about",
+    alternativeNames: [],
+    seoTitle: "Hızır Global A.Ş. | Hızır Global A.Ş. Kurum ve Marka Rehberi",
     seoDescription:
-      "Yetiş+ Çarşı hakkında çalışanların ücret, SGK ve çalışma koşullarıyla ilgili deneyimlerini paylaşabildiği bağımsız platform.",
+      "Hızır Global A.Ş.: Yetiş+ Çarşı dahil farklı sektörlerdeki markaları ekosistem yaklaşımıyla tanıtan şirket. Kaynak ve marka bilgileri.",
     hasContent: true,
   },
   {
     id: "ent-003",
     slug: "yetis-yemek",
     name: "Yetiş+ Yemek",
-    alternativeNames: ["Yetiş Yemek", "YetişYemek"],
+    category: "Yemek siparişi",
     neutralDescription:
-      "Yetiş+ Yemek, yemek hizmetleri alanında faaliyet gösteren bir marka olarak bilinmektedir. Hızır Global A.Ş. ile ilişkisi olduğu belirtilmekte olup bu ilişkinin niteliği doğrulanmalıdır.",
-    seoTitle: "Yetiş+ Yemek Çalışan Deneyimleri | YetişVar",
+      "Restoran ve müşterileri siparişten teslimata uzanan dijital bir hizmette buluşturur.",
+    website: "https://yemek.yetisplus.com/",
+    sourceKind: "official",
+    comingSoon: false,
+    sourceUrl: "https://hizirglobal.com.tr/tr/brands",
+    alternativeNames: [],
+    seoTitle: "Yetiş+ Yemek | Hızır Global A.Ş. Kurum ve Marka Rehberi",
     seoDescription:
-      "Yetiş+ Yemek hakkında çalışan deneyimlerinin paylaşıldığı bağımsız platform.",
-    hasContent: false,
+      "Yetiş+ Yemek: Restoran ve müşterileri siparişten teslimata uzanan dijital bir hizmette buluşturur. Kaynak ve marka bilgileri.",
+    hasContent: true,
   },
   {
     id: "ent-004",
-    slug: "ib-bor",
-    name: "İB-Bor",
-    alternativeNames: ["IB Bor", "İBBor"],
+    slug: "yetis-e-depo",
+    name: "Yetiş E-Depo",
+    category: "Depolama",
     neutralDescription:
-      "İB-Bor, Hızır Global A.Ş. veya ilgili faaliyetlerle bağlantılı olduğu belirtilen bir yapılanmadır. Bu ilişkinin niteliği bağımsız kaynaklarla doğrulanmalıdır.",
-    seoTitle: "İB-Bor Çalışan Deneyimleri | YetişVar",
+      "Stok, depolama ve sevkiyat süreçlerine odaklanan operasyon yapısı.",
+    website: null,
+    sourceKind: "official",
+    comingSoon: true,
+    sourceUrl: "https://hizirglobal.com.tr/tr/brands",
+    alternativeNames: ["Yetiş Organik E-Depo"],
+    seoTitle: "Yetiş E-Depo | Hızır Global A.Ş. Kurum ve Marka Rehberi",
     seoDescription:
-      "İB-Bor hakkında çalışan deneyimlerinin paylaşıldığı bağımsız platform.",
-    hasContent: false,
+      "Yetiş E-Depo: Stok, depolama ve sevkiyat süreçlerine odaklanan operasyon yapısı. Kaynak ve marka bilgileri.",
+    hasContent: true,
   },
   {
     id: "ent-005",
-    slug: "yeton",
-    name: "YETON",
-    alternativeNames: ["Yeton"],
+    slug: "hizir-kurye",
+    name: "Hızır+ Kurye",
+    category: "Kurye ve lojistik",
     neutralDescription:
-      "YETON, Hızır Global A.Ş. veya ilgili faaliyetlerle bağlantılı olduğu belirtilen bir yapılanmadır. Bu ilişkinin niteliği bağımsız kaynaklarla doğrulanmalıdır.",
-    seoTitle: "YETON Çalışan Deneyimleri | YetişVar",
+      "Şehir içi teslimat ve son kilometre operasyonlarına odaklanan kurye markası.",
+    website: null,
+    sourceKind: "official",
+    comingSoon: true,
+    sourceUrl: "https://hizirglobal.com.tr/tr/brands",
+    alternativeNames: [],
+    seoTitle: "Hızır+ Kurye | Hızır Global A.Ş. Kurum ve Marka Rehberi",
     seoDescription:
-      "YETON hakkında çalışan deneyimlerinin paylaşıldığı bağımsız platform.",
-    hasContent: false,
+      "Hızır+ Kurye: Şehir içi teslimat ve son kilometre operasyonlarına odaklanan kurye markası. Kaynak ve marka bilgileri.",
+    hasContent: true,
   },
   {
     id: "ent-006",
+    slug: "yte-express",
+    name: "YTE Express",
+    category: "Lojistik",
+    neutralDescription:
+      "Ulusal ve uluslararası taşıma ile dağıtım süreçleri için tanıtılan lojistik markası.",
+    website: null,
+    sourceKind: "official",
+    comingSoon: true,
+    sourceUrl: "https://hizirglobal.com.tr/tr/brands",
+    alternativeNames: ["YTE Kurye & Lojistik"],
+    seoTitle: "YTE Express | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "YTE Express: Ulusal ve uluslararası taşıma ile dağıtım süreçleri için tanıtılan lojistik markası. Kaynak ve marka bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-007",
+    slug: "yeton",
+    name: "YETON",
+    category: "Tekstil ve perakende",
+    neutralDescription: "Tekstil, moda ve perakende alanında tanıtılan marka.",
+    website: null,
+    sourceKind: "official",
+    comingSoon: true,
+    sourceUrl: "https://hizirglobal.com.tr/tr/brands",
+    alternativeNames: [],
+    seoTitle: "YETON | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "YETON: Tekstil, moda ve perakende alanında tanıtılan marka. Kaynak ve marka bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-008",
+    slug: "hg-collection",
+    name: "HG Collection",
+    category: "Giyim",
+    neutralDescription: "Koleksiyon odaklı giyim markası.",
+    website: null,
+    sourceKind: "official",
+    comingSoon: true,
+    sourceUrl: "https://hizirglobal.com.tr/tr/brands",
+    alternativeNames: [],
+    seoTitle: "HG Collection | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "HG Collection: Koleksiyon odaklı giyim markası. Kaynak ve marka bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-009",
+    slug: "ib-bor",
+    name: "İB-BOR",
+    category: "Tarım",
+    neutralDescription:
+      "Bor içeren bitki besleme ürünleriyle tanıtılan tarım markası.",
+    website: "https://ib-bor.com/",
+    sourceKind: "official",
+    comingSoon: false,
+    sourceUrl: "https://hizirglobal.com.tr/tr/brands",
+    alternativeNames: [],
+    seoTitle: "İB-BOR | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "İB-BOR: Bor içeren bitki besleme ürünleriyle tanıtılan tarım markası. Kaynak ve marka bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-010",
+    slug: "yetisha",
+    name: "YETISHA",
+    category: "Marka kaydı",
+    neutralDescription:
+      "YETISHA adı, Hızır Global A.Ş.’nin marka tanıtımlarında yer alır. Operasyonel faaliyetinin kapsamına ilişkin somut bilgi bu rehberin kaynaklarında bulunmuyor.",
+    website: null,
+    sourceKind: "photo",
+    comingSoon: false,
+    alternativeNames: [],
+    seoTitle: "YETISHA | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "YETISHA: Hızır Global A.Ş.’nin marka tanıtımlarındaki yeri ve mevcut operasyonel faaliyet bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-011",
+    slug: "yetispay",
+    name: "Yetişpay",
+    category: "Marka kaydı",
+    neutralDescription:
+      "Yetişpay adı, Hızır Global A.Ş.’nin marka tanıtımlarında yer alır. Operasyonel faaliyetinin kapsamına ilişkin somut bilgi bu rehberin kaynaklarında bulunmuyor.",
+    website: null,
+    sourceKind: "photo",
+    comingSoon: false,
+    alternativeNames: ["YetişPAY+", "YetişPay"],
+    seoTitle: "Yetişpay | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "Yetişpay: Hızır Global A.Ş.’nin marka tanıtımlarındaki yeri ve mevcut operasyonel faaliyet bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-012",
     slug: "tokx",
     name: "TOKX",
-    alternativeNames: ["Tokx"],
+    category: "Kurye ve lojistik",
     neutralDescription:
-      "TOKX, Hızır Global A.Ş. veya ilgili faaliyetlerle bağlantılı olduğu belirtilen bir yapılanmadır. Bu ilişkinin niteliği bağımsız kaynaklarla doğrulanmalıdır.",
-    seoTitle: "TOKX Çalışan Deneyimleri | YetişVar",
+      "TOKX adı, Hızır Global A.Ş.’nin marka tanıtımlarında yer alır. Operasyonel faaliyetinin kapsamına ilişkin somut bilgi bu rehberin kaynaklarında bulunmuyor.",
+    website: null,
+    sourceKind: "photo",
+    comingSoon: false,
+    alternativeNames: [],
+    seoTitle: "TOKX | Hızır Global A.Ş. Kurum ve Marka Rehberi",
     seoDescription:
-      "TOKX hakkında çalışan deneyimlerinin paylaşıldığı bağımsız platform.",
-    hasContent: false,
+      "TOKX: Hızır Global A.Ş.’nin marka tanıtımlarındaki yeri ve mevcut operasyonel faaliyet bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-013",
+    slug: "ikai-hr",
+    name: "İKAI HR",
+    category: "Marka kaydı",
+    neutralDescription:
+      "İKAI HR adı, Hızır Global A.Ş.’nin marka tanıtımlarında yer alır. Operasyonel faaliyetinin kapsamına ilişkin somut bilgi bu rehberin kaynaklarında bulunmuyor.",
+    website: null,
+    sourceKind: "photo",
+    comingSoon: false,
+    alternativeNames: ["IKAI HR"],
+    seoTitle: "İKAI HR | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "İKAI HR: Hızır Global A.Ş.’nin marka tanıtımlarındaki yeri ve mevcut operasyonel faaliyet bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-014",
+    slug: "hzr-medya",
+    name: "HZR Medya",
+    category: "Medya",
+    neutralDescription:
+      "HZR Medya adı, Hızır Global A.Ş.’nin marka tanıtımlarında yer alır. Operasyonel faaliyetinin kapsamına ilişkin somut bilgi bu rehberin kaynaklarında bulunmuyor.",
+    website: null,
+    sourceKind: "photo",
+    comingSoon: false,
+    alternativeNames: [],
+    seoTitle: "HZR Medya | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "HZR Medya: Hızır Global A.Ş.’nin marka tanıtımlarındaki yeri ve mevcut operasyonel faaliyet bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-015",
+    slug: "ilanexpress",
+    name: "İlanexpress",
+    category: "Marka kaydı",
+    neutralDescription:
+      "İlanexpress adı, Hızır Global A.Ş.’nin marka tanıtımlarında yer alır. Operasyonel faaliyetinin kapsamına ilişkin somut bilgi bu rehberin kaynaklarında bulunmuyor.",
+    website: null,
+    sourceKind: "photo",
+    comingSoon: false,
+    alternativeNames: [],
+    seoTitle: "İlanexpress | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "İlanexpress: Hızır Global A.Ş.’nin marka tanıtımlarındaki yeri ve mevcut operasyonel faaliyet bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-016",
+    slug: "yetis-boat",
+    name: "Yetiş Boat",
+    category: "Marka kaydı",
+    neutralDescription:
+      "Yetiş Boat adı, Hızır Global A.Ş.’nin marka tanıtımlarında yer alır. Operasyonel faaliyetinin kapsamına ilişkin somut bilgi bu rehberin kaynaklarında bulunmuyor.",
+    website: null,
+    sourceKind: "photo",
+    comingSoon: false,
+    alternativeNames: [],
+    seoTitle: "Yetiş Boat | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "Yetiş Boat: Hızır Global A.Ş.’nin marka tanıtımlarındaki yeri ve mevcut operasyonel faaliyet bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-017",
+    slug: "planet-boat",
+    name: "Planet Boat",
+    category: "Marka kaydı",
+    neutralDescription:
+      "Planet Boat adı, Hızır Global A.Ş.’nin marka tanıtımlarında yer alır. Operasyonel faaliyetinin kapsamına ilişkin somut bilgi bu rehberin kaynaklarında bulunmuyor.",
+    website: null,
+    sourceKind: "photo",
+    comingSoon: false,
+    alternativeNames: [],
+    seoTitle: "Planet Boat | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "Planet Boat: Hızır Global A.Ş.’nin marka tanıtımlarındaki yeri ve mevcut operasyonel faaliyet bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-018",
+    slug: "yetis-drone",
+    name: "Yetiş Drone",
+    category: "Savunma teknolojileri",
+    neutralDescription:
+      "Yetiş Drone adı, Hızır Global A.Ş.’nin marka tanıtımlarında yer alır. Operasyonel faaliyetinin kapsamına ilişkin somut bilgi bu rehberin kaynaklarında bulunmuyor.",
+    website: null,
+    sourceKind: "photo",
+    comingSoon: false,
+    alternativeNames: [],
+    seoTitle: "Yetiş Drone | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "Yetiş Drone: Hızır Global A.Ş.’nin marka tanıtımlarındaki yeri ve mevcut operasyonel faaliyet bilgileri.",
+    hasContent: true,
+  },
+  {
+    id: "ent-019",
+    slug: "yetis-modul",
+    name: "Yetiş Modül A.Ş.",
+    category: "Marka kaydı",
+    neutralDescription:
+      "Yetiş Modül A.Ş. adı, Hızır Global A.Ş.’nin marka tanıtımlarında yer alır. Operasyonel faaliyetinin kapsamına ilişkin somut bilgi bu rehberin kaynaklarında bulunmuyor.",
+    website: null,
+    sourceKind: "photo",
+    comingSoon: false,
+    alternativeNames: [],
+    seoTitle: "Yetiş Modül A.Ş. | Hızır Global A.Ş. Kurum ve Marka Rehberi",
+    seoDescription:
+      "Yetiş Modül A.Ş.: Hızır Global A.Ş.’nin marka tanıtımlarındaki yeri ve mevcut operasyonel faaliyet bilgileri.",
+    hasContent: true,
   },
 ];
-
 export function getAllEntities(): Entity[] {
   return mockEntities;
 }
-
 export function getEntityBySlug(slug: string): Entity | undefined {
   return mockEntities.find((e) => e.slug === slug);
 }

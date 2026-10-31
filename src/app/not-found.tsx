@@ -9,7 +9,8 @@ export default function NotFound() {
         <p className="text-7xl font-black tracking-tighter text-brand">404</p>
         <h1 className="mt-2 text-xl font-black text-navy">Sayfa bulunamadı</h1>
         <p className="mx-auto mt-2 max-w-sm text-sm leading-6 text-muted">
-          Aradığınız sayfa taşınmış, silinmiş veya hiç var olmamış olabilir. Deneyimler arasında arama yapabilirsiniz.
+          Aradığınız sayfa taşınmış, silinmiş veya hiç var olmamış olabilir.
+          Şikâyetler arasında arama yapabilirsiniz.
         </p>
         <SearchBox className="mt-6" />
         <Link href="/" className="btn btn-secondary mt-4">

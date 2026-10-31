@@ -1,44 +1,50 @@
 import { generateMeta } from "@/lib/seo";
-import { DraftNotice, InfoLayout } from "@/components/common/InfoLayout";
-
+import { InfoLayout } from "@/components/common/InfoLayout";
+import { config } from "@/lib/config";
 export const metadata = generateMeta({
-  title: "Gizlilik Politikası",
-  description: "YetişVar gizlilik politikası taslağı.",
+  title: "Gizlilik",
+  description: "Kişisel bilgilerini koruyarak yaşadıklarını paylaş.",
   path: "/gizlilik",
 });
-
-export default function GizlilikPage() {
+export default function Page() {
   return (
-    <InfoLayout path="/gizlilik" title="Gizlilik Politikası">
-      <DraftNotice>
-        <strong>Taslak Metin:</strong> Bu sayfa henüz hukukçu tarafından incelenmemiş bir taslaktır.
-        Gerçek veri işleme süreçleri belirlenmeden bu metin hukuken onaylı olarak kabul edilmemelidir.
-      </DraftNotice>
-
+    <InfoLayout
+      path="/gizlilik"
+      title="Gizlilik"
+      lead="Kişisel bilgilerini koruyarak yaşadıklarını paylaş."
+    >
       <div className="card prose-yv p-6 md:p-8">
-        <h2 className="!mt-0">1. Toplanan Veriler</h2>
+        <h2 className="!mt-0">Metinler</h2>
         <p>
-          Platform, başvuru formu aracılığıyla iletilen anlatım metinleri ve isteğe bağlı belgeleri
-          işler. Başvuru sahiplerinin açıkça girmediği kişisel bilgiler toplanmaz. IP adresi ve
-          tarayıcı verileri teknik amaçlarla kayıt altına alınabilir.
+          Önizlediğin metin kendiliğinden yayımlanmaz. Paylaşmadan önce kendine
+          ve başkalarına ait kimlik, iletişim ve banka bilgilerini metinden
+          çıkar. Gönderdiğin içerik inceleme için saklanır; yalnızca onaylanan
+          metinler ve paylaşılmasına izin verdiğin belge kopyaları sitede
+          görünür.
         </p>
-
-        <h2>2. Verilerin Kullanımı</h2>
+        <h2>Belgeler</h2>
         <p>
-          İletilen veriler yalnızca platformun editoryal süreçleri için kullanılır. Üçüncü taraflarla
-          paylaşılmaz; resmi makamların hukuki talebi dışında herhangi bir kurum veya kişiyle iletilmez.
+          Çalışan ve işveren belgeleri formdan yüklenmez; ilgili şikâyetin
+          başlığı belirtilerek{" "}
+          <a
+            href={"mailto:" + config.contactEmail}
+            className="font-bold text-brand"
+          >
+            {config.contactEmail}
+          </a>{" "}
+          adresine gönderilir. E-posta içeriği, kullanılan e-posta hizmetlerinin
+          veri işlemesine tabidir.
         </p>
-
-        <h2>3. Başvuru Sahiplerinin Hakları</h2>
+        <h2>Kamuya açık kopya</h2>
         <p>
-          Başvuru sahipleri istedikleri zaman içeriklerinin kaldırılmasını, düzeltilmesini veya
-          anonim hale getirilmesini talep edebilir. Bu talepler iletişim kanalımız aracılığıyla iletilir.
+          İnceleme belgesi ile yayımlanabilir kopya ayrıdır. Paylaşım yetkisi ve
+          kişisel bilgi gizleme kontrolü yapılmadan belge bağlantısı eklenmez.
+          Ham belgeler açık arşive konulmaz.
         </p>
-
-        <h2>4. Çerezler</h2>
+        <h2>Müzik</h2>
         <p>
-          Platform yalnızca teknik işlevler için zorunlu çerezler kullanır. Üçüncü taraf reklam veya
-          takip çerezleri kullanılmaz.
+          Oynat düğmesine bastığında YouTube hizmetine bağlantı kurulur. Müzik
+          kendiliğinden başlamaz.
         </p>
       </div>
     </InfoLayout>

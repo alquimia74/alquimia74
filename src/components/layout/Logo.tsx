@@ -9,18 +9,23 @@ interface LogoProps {
   light?: boolean;
 }
 
-export function Logo({ className = "", height = 36, light = false }: LogoProps) {
+export function Logo({
+  className = "",
+  height = 36,
+  light = false,
+}: LogoProps) {
   const [err, setErr] = useState(false);
+  const displayHeight = height * 1.5;
 
   if (err) {
     return (
       <span
         className={`inline-flex items-center font-black tracking-tight ${className}`}
-        style={{ fontSize: `${height * 0.62}px`, lineHeight: 1 }}
+        style={{ fontSize: `${displayHeight * 0.62}px`, lineHeight: 1 }}
       >
-        <span className="text-brand">yetiş</span>
-        <span className="text-accent">+</span>
-        <span className={light ? "text-white" : "text-navy"}>var</span>
+        <span className="text-brand">yeti</span>
+        <span className="text-accent">ş</span>
+        <span className={light ? "text-white" : "text-navy"}>ikayet.com</span>
       </span>
     );
   }
@@ -28,12 +33,12 @@ export function Logo({ className = "", height = 36, light = false }: LogoProps) 
   return (
     <Image
       src="/brand/logo.svg"
-      alt="YetiŞikayet"
+      alt="yetişikayet.com"
       width={0}
       height={0}
       unoptimized
       className={`${light ? "brightness-0 invert" : ""} ${className}`}
-      style={{ width: "auto", height }}
+      style={{ width: "auto", height: displayHeight }}
       onError={() => setErr(true)}
       priority
     />

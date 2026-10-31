@@ -1,47 +1,53 @@
 import { generateMeta } from "@/lib/seo";
-import { DraftNotice, InfoLayout } from "@/components/common/InfoLayout";
-
+import { InfoLayout } from "@/components/common/InfoLayout";
+import { config } from "@/lib/config";
 export const metadata = generateMeta({
-  title: "Yayın İlkeleri",
-  description: "YetişVar'ın içerik yayın politikası, moderasyon ilkeleri ve itiraz mekanizması hakkında bilgi.",
+  title: "Yayın ilkeleri",
+  description: "Belge olmadan içerik onayı verilmez.",
   path: "/yayin-ilkeleri",
 });
-
-const principles = [
-  { title: "Birinci Elden Deneyim", content: "Platformda yalnızca başvuru sahibinin bizzat yaşadığı olayların anlatımı kabul edilir. Üçüncü şahıslardan duyulan bilgiler, tahminler veya genel iddiaları içeren başvurular yayımlanmaz." },
-  { title: "İddia ve Doğrulama Ayrımı", content: "Başvuru sahiplerinin anlatımları ile belgeyle desteklenmiş veya bağımsız olarak doğrulanmış bilgiler açıkça birbirinden ayrı gösterilir. Her içerikte doğrulama durumu belirtilir." },
-  { title: "Belge İncelemesi", content: "Başvuru sahipleri isteğe bağlı olarak belge sunabilir. Belgeler anlatımı destekler nitelikte değerlendirilir; sahte veya yanıltıcı belge tespiti halinde başvuru reddedilir." },
-  { title: "Özel Bilgilerin Korunması", content: "Başvuru sahiplerinin kimlik bilgileri, adres ve iletişim verileri gizli tutulur. Üçüncü şahısların özel bilgileri içeriğe dahil edilmez." },
-  { title: "Hakaret ve Tehdit Yasağı", content: "Kişilere yönelik hakaret, iftira veya tehdit içeren ifadeler hiçbir koşulda yayımlanmaz. Belirtilen olayların anlatımı ile kişilik haklarına saldırı niteliğindeki ifadeler ayrıştırılır." },
-  { title: "İtiraz ve Düzeltme", content: "Adı geçen kişi ve kurumlar içerik hakkında cevap, düzeltme veya kaldırma talebini iletişim kanalımız aracılığıyla iletebilir. Talepler editöryal değerlendirmeye tabi tutulur." },
-  { title: "Başvuru Sahibinin Yayın Tercihi", content: "Başvuru sahipleri anlatımlarının anonim, takma adla veya yalnızca editör incelemesine açık biçimde yayımlanmasını talep edebilir. Bu tercih ileride değiştirilebilir." },
-];
-
-export default function YayinIlkeleriPage() {
+export default function Page() {
   return (
     <InfoLayout
       path="/yayin-ilkeleri"
-      title="Yayın İlkeleri"
-      lead="Bu ilkeler platformun editoryal kararlarını yönlendiren çerçeveyi belirler. Başvuru sahiplerinin hakları, içerik kalitesi ve dengeli bir yaklaşım temel önceliklerimizdir."
+      title="Yayın ilkeleri"
+      lead="Belge olmadan içerik onayı verilmez."
     >
-      <ol className="card divide-y divide-line">
-        {principles.map((p, i) => (
-          <li key={p.title} className="flex gap-4 p-5 md:p-6">
-            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-full bg-brand-soft text-sm font-black text-brand">
-              {i + 1}
-            </span>
-            <div>
-              <h2 className="font-extrabold text-navy">{p.title}</h2>
-              <p className="mt-1 text-sm leading-6 text-muted">{p.content}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-
-      <div className="mt-6">
-        <DraftNotice>
-          Bu ilkeler platformun gelişimi sürecinde güncellenebilir. Güncel versiyona bu sayfadan ulaşabilirsiniz.
-        </DraftNotice>
+      <div className="card prose-yv p-6 md:p-8">
+        <h2 className="!mt-0">Çalışan şikâyeti</h2>
+        <p>
+          Yalnızca birinci elden anlatım ve somut dayanak birlikte
+          değerlendirilir. Belgeler, şikâyet başlığı belirtilerek{" "}
+          <a
+            href={"mailto:" + config.contactEmail}
+            className="font-bold text-brand"
+          >
+            {config.contactEmail}
+          </a>{" "}
+          adresine gönderilir. Şikâyetler moderasyon tarafından incelenmeden ve
+          belgelerin doğruluğu araştırılmadan yayımlanmaz.
+        </p>
+        <h2 id="yanit-itiraz">İşveren yanıtı</h2>
+        <p>
+          İşveren de yanıtını belgelemek zorundadır. İncelenmiş bir kaydın
+          aksini ileri süren yanıt, o kaydın dayanaklarını somut biçimde
+          karşılayan ve açıklığa kavuşturan belge sunmalıdır. Salt inkâr, unvan
+          veya şirket politikası yayın kararının yerine geçmez. Belgesiz yanıt
+          yayımlanmaz; salt itiraz nedeniyle şikâyet yayından kaldırılmaz.
+        </p>
+        <h2>Belge paylaşımı</h2>
+        <p>
+          Belgeler iznin olmadan paylaşılmaz. Yayımlanmasına izin verdiğin
+          belgeler, kişisel bilgiler gizlenerek şikâyetin veya yanıtın altında
+          bağlantı olarak sunulur.
+        </p>
+        <h2>İnceleme ve resmî başvuru</h2>
+        <p>
+          Somut hata, kişisel veri veya hak ihlali bildirimleri ayrıca ele
+          alınır; gerekli düzeltme, geçici sınırlandırma veya kaldırma yapılır.
+          Yetkili mercilere doğrudan başvurma hakkı saklıdır; bağlayıcı kararlar
+          yerine getirilir. Yayıncı incelemesi bir mahkeme kararı değildir.
+        </p>
       </div>
     </InfoLayout>
   );

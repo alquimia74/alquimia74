@@ -5,14 +5,18 @@ import Link from "next/link";
 import { useRouter, useSearchParams } from "next/navigation";
 import { LayoutGrid, List, PenLine, Search, X } from "lucide-react";
 import { ExperienceCard } from "@/components/experiences/ExperienceCard";
-import { getAllExperiences, searchExperiences } from "@/data/mock-experiences";
+import type { Experience } from "@/types/experience";
 import { cn } from "@/lib/utils";
 
-export default function DeneyimlerClient() {
-  const sp     = useSearchParams();
+export default function DeneyimlerClient({
+  experiences,
+}: {
+  experiences: Experience[];
+}) {
+  const sp = useSearchParams();
   const router = useRouter();
 
-  const [q,    setQ   ] = useState(sp.get("q") || "");
+  const [q, setQ] = useState(sp.get("q") || "");
   const [view, setView] = useState<"grid" | "list">("list");
   const [sort, setSort] = useState<"newest" | "oldest">("newest");
 
@@ -22,20 +26,33 @@ export default function DeneyimlerClient() {
     router.replace(`/deneyimler${p.size ? "?" + p : ""}`, { scroll: false });
   };
 
-  let list = q ? searchExperiences(q) : getAllExperiences();
+  const query = q.toLocaleLowerCase("tr-TR").trim();
+  let list = query
+    ? experiences.filter((e) =>
+        [e.title, e.content, e.city, e.period]
+          .filter(Boolean)
+          .some((value) => value!.toLocaleLowerCase("tr-TR").includes(query)),
+      )
+    : experiences;
   list = [...list].sort((a, b) =>
-    sort === "newest" ? b.publishedAt.localeCompare(a.publishedAt) : a.publishedAt.localeCompare(b.publishedAt)
+    sort === "newest"
+      ? b.publishedAt.localeCompare(a.publishedAt)
+      : a.publishedAt.localeCompare(b.publishedAt),
   );
-  const reset = () => { setQ(""); router.replace("/deneyimler"); };
+  const reset = () => {
+    setQ("");
+    router.replace("/deneyimler");
+  };
 
   return (
     <>
       {/* Sayfa başlığı */}
       <div className="border-b border-line bg-white">
         <div className="container-main py-6">
-          <h1 className="text-2xl font-black text-navy">Deneyimler</h1>
+          <h1 className="text-2xl font-black text-navy">Şikâyetler</h1>
           <p className="mt-1 text-sm text-muted">
-            Editöryal incelemeden geçmiş, yayımlanmış çalışan anlatımları.
+            Yetiş+ Çarşı hakkında bir araya getirilen çalışan şikâyetleri ve
+            anlatımları.
           </p>
         </div>
       </div>
@@ -44,9 +61,14 @@ export default function DeneyimlerClient() {
         <aside className="space-y-4">
           <div className="card hidden p-5 lg:block">
             <p className="font-extrabold text-navy">Sen de yaşadın mı?</p>
-            <p className="mt-1 text-sm text-muted">Deneyimini anonim olarak paylaşabilirsin.</p>
-            <Link href="/deneyimini-paylas" className="btn btn-primary mt-4 w-full">
-              <PenLine className="h-4 w-4" /> Deneyim Yaz
+            <p className="mt-1 text-sm text-muted">
+              Yaşadıklarını belgeleriyle birlikte bir araya getir.
+            </p>
+            <Link
+              href="/deneyimini-paylas"
+              className="btn btn-primary mt-4 w-full"
+            >
+              <PenLine className="h-4 w-4" /> Şikâyet yaz
             </Link>
           </div>
         </aside>
@@ -59,16 +81,22 @@ export default function DeneyimlerClient() {
               <input
                 type="search"
                 id="deneyim-arama"
-                placeholder="Bu sonuçlarda ara: kurum, şehir…"
+                placeholder="Şikâyet konusu veya şehir…"
                 value={q}
-                onChange={(e) => { setQ(e.target.value); push(e.target.value); }}
+                onChange={(e) => {
+                  setQ(e.target.value);
+                  push(e.target.value);
+                }}
                 className="input pl-9 pr-9"
-                aria-label="Deneyim ara"
+                aria-label="Şikâyet ara"
               />
               {q && (
                 <button
                   type="button"
-                  onClick={() => { setQ(""); push(""); }}
+                  onClick={() => {
+                    setQ("");
+                    push("");
+                  }}
                   className="absolute right-3 top-1/2 -translate-y-1/2 text-subtle hover:text-ink"
                   aria-label="Aramayı temizle"
                 >
@@ -92,13 +120,21 @@ export default function DeneyimlerClient() {
                     key={v}
                     type="button"
                     onClick={() => setView(v)}
-                    aria-label={v === "grid" ? "Izgara görünümü" : "Liste görünümü"}
+                    aria-label={
+                      v === "grid" ? "Izgara görünümü" : "Liste görünümü"
+                    }
                     className={cn(
                       "grid h-8 w-8 place-items-center rounded-md transition-colors",
-                      view === v ? "bg-brand text-white" : "text-subtle hover:text-ink"
+                      view === v
+                        ? "bg-brand text-white"
+                        : "text-subtle hover:text-ink",
                     )}
                   >
-                    {v === "grid" ? <LayoutGrid className="h-4 w-4" /> : <List className="h-4 w-4" />}
+                    {v === "grid" ? (
+                      <LayoutGrid className="h-4 w-4" />
+                    ) : (
+                      <List className="h-4 w-4" />
+                    )}
                   </button>
                 ))}
               </div>
@@ -107,10 +143,15 @@ export default function DeneyimlerClient() {
 
           <div className="mb-3 flex items-center justify-between text-sm">
             <p className="text-muted">
-              <span className="font-extrabold text-navy">{list.length}</span> deneyim listeleniyor
+              <span className="font-extrabold text-navy">{list.length}</span>{" "}
+              şikâyet listeleniyor
             </p>
             {q && (
-              <button type="button" onClick={reset} className="flex items-center gap-1 text-xs font-bold text-brand">
+              <button
+                type="button"
+                onClick={reset}
+                className="flex items-center gap-1 text-xs font-bold text-brand"
+              >
                 <X className="h-3 w-3" /> Filtreleri sıfırla
               </button>
             )}
@@ -120,14 +161,24 @@ export default function DeneyimlerClient() {
             <div className="card py-20 text-center">
               <Search className="mx-auto mb-4 h-10 w-10 text-line" />
               <p className="font-bold text-navy">Sonuç bulunamadı</p>
-              <p className="mb-5 mt-1 text-sm text-muted">Farklı bir kelime deneyebilirsin.</p>
+              <p className="mb-5 mt-1 text-sm text-muted">
+                Farklı bir kelime deneyebilirsin.
+              </p>
               <button type="button" onClick={reset} className="btn btn-primary">
                 Filtreleri Temizle
               </button>
             </div>
           ) : (
-            <div className={view === "grid" ? "grid gap-4 md:grid-cols-2" : "flex flex-col gap-4"}>
-              {list.map((exp) => <ExperienceCard key={exp.id} experience={exp} />)}
+            <div
+              className={
+                view === "grid"
+                  ? "grid gap-4 md:grid-cols-2"
+                  : "flex flex-col gap-4"
+              }
+            >
+              {list.map((exp) => (
+                <ExperienceCard key={exp.id} experience={exp} />
+              ))}
             </div>
           )}
         </section>

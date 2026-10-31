@@ -8,8 +8,18 @@ export function cn(...inputs: ClassValue[]) {
 /** Türkçe karakterleri URL-dostu slug'a çevirir */
 export function slugify(text: string): string {
   const trMap: Record<string, string> = {
-    ç: "c", Ç: "C", ğ: "g", Ğ: "G", ı: "i", İ: "I",
-    ö: "o", Ö: "O", ş: "s", Ş: "S", ü: "u", Ü: "U",
+    ç: "c",
+    Ç: "C",
+    ğ: "g",
+    Ğ: "G",
+    ı: "i",
+    İ: "I",
+    ö: "o",
+    Ö: "O",
+    ş: "s",
+    Ş: "S",
+    ü: "u",
+    Ü: "U",
   };
   return text
     .split("")
@@ -31,8 +41,14 @@ export function formatDate(dateStr: string): string {
 
 /** Çalışma dönemini okunabilir biçime çevirir */
 export function formatPeriod(start: string, end?: string): string {
-  const s = new Date(start).toLocaleDateString("tr-TR", { year: "numeric", month: "long" });
+  const s = new Date(start).toLocaleDateString("tr-TR", {
+    year: "numeric",
+    month: "long",
+  });
   if (!end) return `${s} – (devam)`;
-  const e = new Date(end).toLocaleDateString("tr-TR", { year: "numeric", month: "long" });
+  const e = new Date(end).toLocaleDateString("tr-TR", {
+    year: "numeric",
+    month: "long",
+  });
   return `${s} – ${e}`;
 }

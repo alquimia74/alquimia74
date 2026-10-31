@@ -1,16 +1,16 @@
 import Link from "next/link";
-import { AlertCircle, ChevronRight } from "lucide-react";
+import { ChevronRight } from "lucide-react";
 import { Breadcrumb } from "./Breadcrumb";
 import { cn } from "@/lib/utils";
 
 const PAGES = [
-  { href: "/hakkimizda",            label: "Hakkımızda" },
-  { href: "/nasil-calisir",         label: "Nasıl Çalışır?" },
-  { href: "/yayin-ilkeleri",        label: "Yayın İlkeleri" },
+  { href: "/hakkimizda", label: "Hakkımızda" },
+  { href: "/nasil-calisir", label: "Nasıl Çalışır?" },
+  { href: "/yayin-ilkeleri", label: "Yayın İlkeleri" },
   { href: "/sikca-sorulan-sorular", label: "Sık Sorulan Sorular" },
-  { href: "/iletisim",              label: "İletişim" },
-  { href: "/gizlilik",              label: "Gizlilik Politikası" },
-  { href: "/kvkk-aydinlatma",       label: "KVKK Aydınlatma Metni" },
+  { href: "/iletisim", label: "İletişim" },
+  { href: "/gizlilik", label: "Gizlilik Politikası" },
+  { href: "/kvkk-aydinlatma", label: "Kişisel Veriler" },
 ];
 
 interface InfoLayoutProps {
@@ -27,14 +27,23 @@ export function InfoLayout({ path, title, lead, children }: InfoLayoutProps) {
       <div className="border-b border-line bg-white">
         <div className="container-main py-6">
           <Breadcrumb items={[{ label: title }]} />
-          <h1 className="mt-3 text-2xl font-black text-navy md:text-3xl">{title}</h1>
-          {lead && <p className="mt-1 max-w-2xl text-sm leading-6 text-muted">{lead}</p>}
+          <h1 className="mt-3 text-2xl font-black text-navy md:text-3xl">
+            {title}
+          </h1>
+          {lead && (
+            <p className="mt-1 max-w-2xl text-sm leading-6 text-muted">
+              {lead}
+            </p>
+          )}
         </div>
       </div>
 
       <div className="container-main mt-6 grid grid-cols-1 gap-6 lg:grid-cols-[260px_minmax(0,1fr)]">
         <aside className="hidden lg:block">
-          <nav className="card sticky top-[180px] py-2" aria-label="Kurumsal sayfalar">
+          <nav
+            className="card sticky top-[180px] py-2"
+            aria-label="Kurumsal sayfalar"
+          >
             {PAGES.map((p) => (
               <Link
                 key={p.href}
@@ -44,7 +53,7 @@ export function InfoLayout({ path, title, lead, children }: InfoLayoutProps) {
                   "flex items-center justify-between border-l-[3px] px-5 py-2.5 text-sm font-semibold transition-colors",
                   p.href === path
                     ? "border-brand bg-brand-soft text-brand"
-                    : "border-transparent text-muted hover:bg-page hover:text-ink"
+                    : "border-transparent text-muted hover:bg-page hover:text-ink",
                 )}
               >
                 {p.label}
@@ -56,14 +65,5 @@ export function InfoLayout({ path, title, lead, children }: InfoLayoutProps) {
         <div className="min-w-0">{children}</div>
       </div>
     </>
-  );
-}
-
-export function DraftNotice({ children }: { children: React.ReactNode }) {
-  return (
-    <div className="mb-4 flex items-start gap-3 rounded-xl border border-accent/50 bg-accent-soft p-4 text-sm leading-6 text-[#7a5200]">
-      <AlertCircle className="mt-0.5 h-5 w-5 shrink-0" />
-      <p>{children}</p>
-    </div>
   );
 }

@@ -8,14 +8,17 @@ export function sortByNewest(list: Experience[]): Experience[] {
 
 /** Kurumları deneyim sayısına göre sıralar */
 export function getEntityRanking() {
-  const exps = getAllExperiences();
+  const exps = getAllExperiences().filter((e) => !e.isExample);
   return getAllEntities()
-    .map((entity) => ({ entity, count: exps.filter((e) => e.entitySlug === entity.slug).length }))
+    .map((entity) => ({
+      entity,
+      count: exps.filter((e) => e.entitySlug === entity.slug).length,
+    }))
     .sort((a, b) => b.count - a.count);
 }
 
 export function getPlatformStats() {
-  const exps = getAllExperiences();
+  const exps = getAllExperiences().filter((e) => !e.isExample);
   return {
     experiences: exps.length,
     entities: getAllEntities().length,
